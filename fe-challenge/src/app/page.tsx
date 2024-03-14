@@ -17,9 +17,8 @@ export default function Home() {
           walletKey={walletKey}
           setWalletKey={setWalletKey}
         />
-        <QueryBalance type={1} setBalance={setBalance} />
-        {balance !== 0 && <div className="text-white mt-4"></div>}
       </div>
+      {walletKey && <QueryBalance type={1} setBalance={setBalance} />}
     </main>
   );
 }

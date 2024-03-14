@@ -22,9 +22,24 @@ const WalletButton = ({
       <button
         onClick={connectWallet}
         className="text-black bg-white border rounded p-4 shadow-lg font-bold text-grey-darkest"
+        style={{ width: "200px", position: "absolute", top: "150px" }}
       >
         {walletKey !== "" ? "Wallet Connected" : "Connect Wallet"}
       </button>
+      {walletKey !== "" && (
+        <div
+          className="font-bold"
+          style={{
+            position: "absolute",
+            top: "230px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <span style={{ marginRight: "5px" }}>Wallet:</span>{" "}
+          <span>{walletKey}</span>
+        </div>
+      )}
     </div>
   ) : null;
 };

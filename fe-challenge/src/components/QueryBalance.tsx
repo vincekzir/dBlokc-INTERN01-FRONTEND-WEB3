@@ -24,8 +24,11 @@ const QueryBalance = ({ type, setBalance }: { type: any; setBalance: any }) => {
   }, []);
 
   return type === 1 ? (
-    <div className="flex flex-col items-center">
-      {balanceDisplay !== null && <div>{balanceDisplay} ETH</div>}
+    <div
+      className="flex flex-col items-center font-bold"
+      style={{ position: "absolute", bottom: "50%" }}
+    >
+      {balanceDisplay !== null && <div> Balance: {balanceDisplay} ETH</div>}
     </div>
   ) : null;
 };
