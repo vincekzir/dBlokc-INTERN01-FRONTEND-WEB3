@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import WalletButton from "../components/WalletButton";
 import QueryBalance from "../components/QueryBalance";
+import QueryNFTs from "../components/QueryNFTs";
 // import { getContract } from "./getContract";
 
 export default function Home() {
@@ -21,7 +22,21 @@ export default function Home() {
           setWalletKey={setWalletKey}
         />
       </div>
-      {walletKey && <QueryBalance type={1} setBalance={setBalance} />}
+      <div
+        className="relative flex place-items-center"
+        style={{ position: "absolute", bottom: "60px" }}
+      >
+        {walletKey && (
+          <>
+            <QueryBalance
+              type={1}
+              setBalance={setBalance}
+              walletKey={walletKey}
+            />
+            <QueryNFTs type={1} setBalance={setBalance} walletKey={walletKey} />
+          </>
+        )}
+      </div>
     </main>
   );
 }

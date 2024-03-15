@@ -2,21 +2,36 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { BrowserProvider } from "ethers";
 
-const QueryBalance = ({ type, setBalance }: { type: any; setBalance: any }) => {
+const QueryBalance = ({
+  type,
+  setBalance,
+  walletKey,
+}: {
+  type: any;
+  setBalance: any;
+  walletKey: any;
+}) => {
   const [balanceDisplay, setBalanceDisplay] = useState("");
 
   useEffect(() => {
     const getBalance = async () => {
       try {
-        // Fetch balance from your Render-deployed API
+        const { ethereum } = window as any;
+        const provider = new BrowserProvider(ethereum);
+        const signer = await provider.getSigner();
+        const address = signer.address;
+
         const response = await fetch(
-          "https://dblokc-intern01-backend-web3-1.onrender.com"
+          `https://dblokc-intern01-backend-web3-1.onrender.com/balance/${address}`
         );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
-        // Assuming your API response contains a field named 'balance'
         const balance = data.balance;
 
-        // Update state with the fetched balance
         setBalance(balance);
         setBalanceDisplay(balance);
       } catch (error) {
@@ -30,7 +45,7 @@ const QueryBalance = ({ type, setBalance }: { type: any; setBalance: any }) => {
   return type === 1 ? (
     <div
       className="flex flex-col items-center font-bold"
-      style={{ position: "absolute", bottom: "450px" }}
+      style={{ position: "absolute", bottom: "395px", left: "43.5%" }}
     >
       {balanceDisplay !== null && <div> Balance: {balanceDisplay} ETH</div>}
     </div>
