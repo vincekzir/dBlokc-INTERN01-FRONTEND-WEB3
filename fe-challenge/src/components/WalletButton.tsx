@@ -22,7 +22,7 @@ const WalletButton = ({
       <button
         onClick={connectWallet}
         className="text-black bg-white border rounded p-4 shadow-lg font-bold text-grey-darkest"
-        style={{ width: "200px", position: "absolute", top: "150px" }}
+        style={{ width: "200px", position: "absolute", bottom: "450px" }}
       >
         {walletKey !== "" ? "Wallet Connected" : "Connect Wallet"}
       </button>
@@ -31,7 +31,7 @@ const WalletButton = ({
           className="font-bold"
           style={{
             position: "absolute",
-            top: "230px",
+            bottom: "390px",
             display: "flex",
             alignItems: "center",
           }}

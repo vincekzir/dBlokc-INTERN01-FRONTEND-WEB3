@@ -11,6 +11,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-blue-900">
+      <header className="text-white text-3xl font-bold mb-8">
+        Metamask Wallet Fetcher
+      </header>
       <div className="relative flex place-items-center">
         <WalletButton
           type={1}
