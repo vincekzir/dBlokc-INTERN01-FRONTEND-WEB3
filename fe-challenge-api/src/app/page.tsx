@@ -33,7 +33,7 @@ export default function Home() {
               setBalance={setBalance}
               walletKey={walletKey}
             />
-            <QueryNFTs type={1} setBalance={setBalance} walletKey={walletKey} />
+            <QueryNFTs type={1} />
           </>
         )}
       </div>
