@@ -8,13 +8,17 @@ const QueryBalance = ({ type, setBalance }: { type: any; setBalance: any }) => {
   useEffect(() => {
     const getBalance = async () => {
       try {
-        const { ethereum } = window as any;
-        const provider = new BrowserProvider(ethereum);
-        const signer = await provider.getSigner();
-        const balance = await provider.getBalance(signer);
-        const adjustedBalance = ethers.formatEther(balance);
-        setBalance(adjustedBalance);
-        setBalanceDisplay(adjustedBalance);
+        // Fetch balance from your Render-deployed API
+        const response = await fetch(
+          "https://dblokc-intern01-backend-web3-1.onrender.com"
+        );
+        const data = await response.json();
+        // Assuming your API response contains a field named 'balance'
+        const balance = data.balance;
+
+        // Update state with the fetched balance
+        setBalance(balance);
+        setBalanceDisplay(balance);
       } catch (error) {
         console.error("Error fetching balance:", error);
       }
