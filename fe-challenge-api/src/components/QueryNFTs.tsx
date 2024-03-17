@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { BrowserProvider } from "ethers";
 
+interface NFT {
+  name: string;
+  symbol: string;
+  tokenId: string;
+  metadata: {
+    image: string;
+  };
+}
+
 const QueryNFTs = ({ type }: { type: any }) => {
   const [nfts, setNFTs] = useState([]);
 
@@ -35,7 +44,7 @@ const QueryNFTs = ({ type }: { type: any }) => {
 
   return type === 1 ? (
     <div>
-      {nfts.map((nft, index) => (
+      {(nfts as NFT[]).map((nft, index) => (
         <div key={index} className="border border-gray-400 p-4 mb-4">
           <h3 className="text-xl font-bold">{nft.name}</h3>
           <p className="text-gray-600">Symbol: {nft.symbol}</p>
